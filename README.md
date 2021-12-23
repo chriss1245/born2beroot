@@ -39,7 +39,7 @@ If we execute ``sudo -v`` we can check whether the user can run sudo.
 ![sudo](https://user-images.githubusercontent.com/58918297/147292664-b475c37d-48c2-4b9e-b798-2bea7bc96a80.png)
 
 Now we need to stablish a strong policy for the sudo group.
-```consol
+```console
 sudo nano /etc/sudoers
 ```
 It is recommended not to edit the suddores file. It is a good practice to edit the /etc/sudoers.d directory. There you can create more complex policies.
@@ -55,3 +55,21 @@ has to be saved in the /var/log/sudo/ folder.
 * For security reasons too, the paths that can be used by sudo must be restricted.
 Example:
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
+## Ufw
+Ufw stands for Unclomplicated Firewall. It is a firewall xd. To install it.
+```console
+sudo apt install ufw
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw enable
+```
+To allow 4242 port:
+```console 
+sudo ufw allow 4242
+```
+
+## SSH
+SSH is a protocol that provides a secure way for users to connect to a computer over an insecure network (internet). 
+We have been told to change the port (by de fault 22) to 4242 on the ``/etc/ssh/sshd_config`` file.
+
