@@ -2,23 +2,23 @@
 The steps  I made to start up a server (based on [Baigalaa's ](https://baigal.medium.com/born2beroot-e6e26dfb50ac) guide) on a virtual machine.
 
 ## Operating System
-We were told to choose among **Cent OS** and **Debian**
+We were told to choose between **Cent OS** and **Debian**
 I decided to choose Debian because of the community it supports it. While Cent OS is supported by the Red Hat company, Debian is more a hippie distro.
 In addition, Debian is one of the most popular and well stablished linux dstributions. Other distributions such as Ubuntu are Debian based. 
 
-One of the most significant differences among Debian and Cent Os is at the Linux Security Module (which handles the resources permissions' a program have). Cent Os implements SELinux against Debian which implements AppArmor. AppArmor was designed to be more user friendly and works with profiles intead of a policy.
+One of the most significant differences between Debian and Cent Os is at the Linux Security Module (which handles the resources' permissions a program has). Cent Os implements SELinux whereas Debian implements AppArmor. AppArmor was designed to be more user friendly and works with profiles intead of a policy.
 
 ## Installation
 * I created a new virtual machine using the latest version of Debian (11.2.0). 
-* I created a boot partition of 500 MB mounted on ``\boot`` and a logical partition which will contain encrypted logical volumes in the LVMGroup.
+* I created a boot partition of 500 MB mounted on ``/boot`` and a logical partition which will contain encrypted logical volumes in the LVMGroup.
   * |Name|Mount Point|File System|Description|
     |----|-----------|------------|----------|
-    |root|``\``|Ext4|The parent folder of the whole schema|
-    |home|``\home``|Ext4|The folder where the users' information will be stored|
-    |srv|``\srv``|Ext4|Site specific data server by the system|
-    |tmp|``\tmp``|Ext4|Where the temporal files lie|
-    |var|``\var``|Ext4|Contains variable files that the operating system reads and write in|
-    |var-log|``\var\log``|Ext4|Contains the log files|
+    |root|``/``|Ext4|The parent folder of the whole schema|
+    |home|``/home``|Ext4|The folder where the users' information will be stored|
+    |srv|``/srv``|Ext4|Site specific data server by the system|
+    |tmp|``/tmp``|Ext4|Where the temporal files lie|
+    |var|``/var``|Ext4|Contains variable files that the operating system reads and write in|
+    |var-log|``/var/log``|Ext4|Contains the log files|
     |swap| ``-``|Linux Swap|Auxiliar storage if the RAM is full|
 * I only installed ssh. Not graphical interface neither standard system utilities.
 
