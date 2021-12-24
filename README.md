@@ -79,4 +79,25 @@ Finally we can connect from our computer's terminal by:
 ssh cmanzano@127.0.0.1 -p 4242
 ```
 
-## Users Policy
+## Passwords Policy
+We were told:
+
+* Your password has to expire every 30 days. ``PASS_MAX_DAYS 30``
+* The minimum number of days allowed before the modification of a password will be set to 2. ``PASS_MIN_DAYS 30``
+* The user has to receive a warning message 7 days before their password expires. ``PASS_WARN_AGE 7``
+We can apply these rules by modifying the file ``/etc/login.def``
+```console
+sudo nano /etc/login.def
+```
+
+* Your password must be at least 10 characters long. It must contain an uppercase letter and a number. Also, it must not contain more than 3 consecutive identical
+characters ``minlen=10`` ``ucredit=-1`` ``dcredit=-1`` ``maxrepeat=3``
+* The password must not include the name of the user. ``reject_username``
+* The following rule does not apply to the root password: The password must have at least 7 characters that are not part of the former password. ``difok=7``
+* Of course, your root password has to comply with this policy ``enforce_for_root``
+In order to apply the remaining requirements we need to install the ``libpam-pwquality`` packege and edit the ``common-password`` file found at the ``/etc/pam.d/`` directory.
+```console
+sudo apt install libpam-pwquality
+sudo nano /etc/pam.d/common-password
+```
+
