@@ -71,5 +71,12 @@ sudo ufw allow 4242
 
 ## SSH
 SSH is a protocol that provides a secure way for users to connect to a computer over an insecure network (internet). 
-We have been told to change the port (by de fault 22) to 4242 on the ``/etc/ssh/sshd_config`` file.
+We have been told to change the port (by de fault 22) to 4242 on the ``/etc/ssh/sshd_config`` file. In addition, we have to disable login as root throught ssh. In the same file we det the ``PermitRootLogin`` option to ``no``.
 
+In order to allow ssh connections to the virtual machine it is also needed that we enable *port forwarding* at the network settings.
+Finally we can connect from our computer's terminal by: 
+```console 
+ssh cmanzano@127.0.0.1 -p 4242
+```
+
+## Users Policy
