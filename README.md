@@ -103,3 +103,33 @@ sudo apt install libpam-pwquality
 sudo nano /etc/pam.d/common-password
 ```
 
+## Users
+To add a new user we use:
+```console
+sudo adduser <user>
+```
+To check agin information of the user:
+```console
+sudo chage -l <user>
+```
+
+## Groups
+Groups are collections of users. You can grant privileges to a group instead of doing with each user.
+To create a group we execute:
+```console
+sudo addgroup <group>
+```
+To add user to groups we can do by typing:
+```console
+sudo adduser <user> <group>
+```
+### Note: 
+To check whether an user belongs to a group we can do.
+```console
+sudo id <user>
+```
+## Monitoring
+We have to schedule a script which executes a shell command to gather some information each 10 minutes.
+
+In order to do this we are going to use the systemd.time 
+
