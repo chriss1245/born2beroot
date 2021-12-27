@@ -162,3 +162,81 @@ In addition we need to install ``curl`` which allows us to download documents fr
 sudo apt install curl
 ```
 
+### Lighttpd
+Lighttpd is a daemon program. In other words, it is a program which isruns as a backgroud process.
+The web servers like lighttpd use by convention the port 80. We need to open it. 
+```console
+sudo ufw allow 80
+```
+### MariaDB
+MariaDB is a Relational Database Management System. It provides an SQL (Structured Query Language) interface to manage relational databases. Also it can handle users and permissions.
+
+When we install ``mariadb-server`` we also install a script called ``mysql_secure_installation``. We have to execute it in order to continue with the installation.
+```console
+sudo mysql_secure_installation
+```
+The script will start asking you questions related with the configuration of the database. In principle you can anwser to all yes. (I answered not when they told me to change the password and changing to unix socket authentication)
+
+By default there will be just one user: ``root``. To access to mariadb: 
+```console
+sudo mariadb
+``` 
+To create a database:
+```sql
+CREATE DATABASE db42;
+```
+It is a good practice to create an specific user for the web server and giving only the required permissions intstead of using root.
+```sql
+CREATE DATABASE web42@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON db42.* to 'web42'@'localhost';
+FLUSH PRIVILEGES;
+```
+To exit from mariadb:
+```sql
+exit
+```
+
+### Wordpress
+Once installed. There will be a folder which contains the required files in order to make the lighttpd sever work. We just have to copy them to the folder that the lightttpd server reads
+```console
+sudo cp -r /usr/share/wordpress/ /var/www/html/
+```
+We have to stablish a configuration file. There is already an example of it in the files we just coppied. We are going to use it:
+```console
+sudo cp /var/www/html/wp-config-sample.php  /var/www/html/wp-config.php
+```
+But we still need to specify the user and the database wordpress is connecting to.
+We have to edit thses things in ``wp-config.php``
+```php
+define( 'DB_NAME', 'db42' );
+define( 'DB_USER', 'web42' );
+define( 'DB_PASSWORD', 'web42' );
+```
+Next we have to load the new configuration for lighttpd:
+```console
+sudo lighty-enable-mod fastcgi
+sudo lighty-enable-mod fastcgi-php
+sudo service lighttpd force-reload
+```
+Finally we have to go to settings on the virtual box and enable port forwarding for the port 80 -> 80.
+
+You can access to it by typing http://127.0.0.1:80 on your web browser.
+
+After creating an user, you can start blogging.
+
+<!--
+## Additional Service
+I have decided to set up a FTP (File Transfer Protocol) for two reasons:
+* It is done on [one of the giudes](https://github.com/hanshazairi/42-born2beroot) I am based on. 
+* I want to understand how does it work.
+
+To begin we need to install an ftp server:
+```console
+sudo apt install vsftpd
+```
+FTP runs over port 21 by convention. We have to open it.
+```console
+sudo ufw allow 21
+```-->
+
+
