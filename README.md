@@ -129,7 +129,36 @@ To check whether an user belongs to a group we can do.
 sudo id <user>
 ```
 ## Monitoring
-We have to schedule a script which executes a shell command to gather some information each 10 minutes.
+We have to schedule a script ``monitoring.sh`` which executes a shell command to gather some information each 10 minutes.
 
-In order to do this we are going to use the systemd.time 
+In order to do this we are going to use the ``systemd.time`` which is a systemd functionality which allows to scheduele tasks as ``cron`` but it is more powerful. Because cron only can schedule based on the current time whereas systemd.time can schedule based on boot time and current time. For our task. We need to run ``monitoring.sh`` each 10 minutes from boot time.
+
+In order to use systemd.timer we need three files:
+* monitoring.timer
+* monitoring.service
+* monitoring.sh
+
+``monitoring.timer`` will contain the scheduling information. There we are going to specify that the task has to be executed each 10 minutes. The *.timer* files can trigger *.service* files. Thus we need to have a ``monitoring.service`` file. At ``monitoring.service`` we specify which script to execute and which is the user that executes it (for permissions).  Finally the script ``monitoring.sh`` will contain a script that gives a detailed information of the system.
+
+## Webserver
+As an additional thing to do we were told to set up a wordpress server on lighttpd with php using mariadb as database.
+In order to do this we need to install the following things:
+```console
+sudo apt install lighttpd mariadb-server php-cgi php-mysql wordpress
+```
+Where:
+* **lighttpd:** is the web server
+* **php:** is the backend
+  * **php-cgi:** is a translator among php and lighttpd
+  * **php-mysql** is a translator among php and mariadb
+* **mariadb**: is the database
+* **wordpress**: is a content management system which allows non developers to add and remove content from the web page.
+
+
+In addition we need to install ``curl`` which allows us to download documents from url.
+
+``wordpress`` is a content management system. It is useful for adding content to the web page withot the need of programming knowledge.
+```console
+sudo apt install curl
+```
 
