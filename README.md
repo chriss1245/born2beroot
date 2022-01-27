@@ -86,9 +86,9 @@ We were told:
 * The minimum number of days allowed before the modification of a password will be set to 2. ``PASS_MIN_DAYS 30``
 * The user has to receive a warning message 7 days before their password expires. ``PASS_WARN_AGE 7``
 
-We can apply these rules by modifying the file ``/etc/login.def``
+We can apply these rules by modifying the file ``/etc/login.defs``
 ```console
-sudo nano /etc/login.def
+sudo nano /etc/login.defs
 ```
 
 * Your password must be at least 10 characters long. It must contain an uppercase letter and a number. Also, it must not contain more than 3 consecutive identical
@@ -126,7 +126,7 @@ sudo adduser <user> <group>
 ### Note: 
 To check whether an user belongs to a group we can do.
 ```console
-sudo id <user>
+sudo groups <user>
 ```
 ## Monitoring
 We have to schedule a script ``monitoring.sh`` which executes a shell command to gather some information each 10 minutes.
