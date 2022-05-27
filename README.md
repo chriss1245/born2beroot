@@ -240,3 +240,10 @@ sudo ufw allow 21
 ```-->
 
 
+### Additional command you may need
+
+|**Command**|**Description*|
+|------------------|------------------|
+|``sudo getent group``|List all the groups|
+|``sudo getent passwd``|List all the users|
+
