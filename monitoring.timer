@@ -1,0 +1,9 @@
+[Unit]
+Description=Launches a monitoring.service 10 minutes from boot time.
+
+[Timer]
+OnUnitActiveSec=600
+Unit=monitoring.service
+
+[Install]
+WantedBy=timers.target

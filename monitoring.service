@@ -1,0 +1,10 @@
+[Unit]
+Description=Launches a monitoring script
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/local/bin/monitoring.sh
+
+[Install]
+WantedBy=multi-user.target
