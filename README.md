@@ -6,7 +6,7 @@ We were told to choose between **Cent OS** and **Debian**
 I decided to choose Debian because of the community it supports it. While Cent OS is supported by the Red Hat company, Debian is more a hippie distro.
 In addition, Debian is one of the most popular and well stablished linux dstributions. Other distributions such as Ubuntu are Debian based. 
 
-One of the most significant differences between Debian and Cent Os is at the Linux Security Module (which handles the resources' permissions a program has). Cent Os implements SELinux whereas Debian implements AppArmor. AppArmor was designed to be more user friendly and works with profiles intead of a policy.
+One of the most significant differences between Debian and Cent Os is at the Linux Security Module (which handles the resources' permissions a program has). Cent Os implements SELinux whereas Debian implements AppArmor. AppArmor was designed to be more user friendly and works with profiles instead of a policy.
 
 ## Installation
 * I created a new virtual machine using the latest version of Debian (11.2.0). 
