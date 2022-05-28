@@ -1,6 +1,11 @@
 # Born2BeRoot
 The steps  I made to start up a server (based on [Baigalaa's ](https://baigal.medium.com/born2beroot-e6e26dfb50ac) guide) on a virtual machine.
 
+## Storage limitation
+There is a limitation in the size of all the folders except sgoinfre and goinfre folders. We must store our virtual machine at sgoinfre/students/login
+
+There is also a limitation in sgoinfre. If we exceed the 15GB in sgoinfree. Your folder will be delated on the next day. So I recommend you to store the finished .vdi file in Google drive.
+
 ## Operating System
 We were told to choose between **Cent OS** and **Debian**
 I decided to choose Debian because of the community it supports it. While Cent OS is supported by the Red Hat company, Debian is more a hippie distro.
